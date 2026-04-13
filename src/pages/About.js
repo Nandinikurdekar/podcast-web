@@ -6,33 +6,42 @@ function About() {
 
         { /* TITLE */ } <
         motion.h1 initial = {
-            { opacity: 0, y: -20 } }
+            { opacity: 0, y: -20 }
+        }
         animate = {
-            { opacity: 1, y: 0 } }
+            { opacity: 1, y: 0 }
+        }
         transition = {
-            { duration: 0.8, ease: "easeOut" } }
+            { duration: 0.8, ease: "easeOut" }
+        }
         className = "text-4xl font-bold mb-6" >
         About the Show <
         /motion.h1>
 
         { /* DESCRIPTION */ } <
         motion.p initial = {
-            { opacity: 0 } }
+            { opacity: 0 }
+        }
         animate = {
-            { opacity: 1 } }
+            { opacity: 1 }
+        }
         transition = {
-            { duration: 0.8, ease: "easeOut" } }
+            { duration: 0.8, ease: "easeOut" }
+        }
         className = "text-gray-400 max-w-3xl mb-10" >
         This podcast platform delivers curated content across technology, business, and lifestyle.Each episode is designed to provide valuable insights, real - world experiences, and engaging discussions. <
         /motion.p>
 
         { /* CONTACT */ } <
         motion.div initial = {
-            { opacity: 0, y: 30 } }
+            { opacity: 0, y: 30 }
+        }
         animate = {
-            { opacity: 1, y: 0 } }
+            { opacity: 1, y: 0 }
+        }
         transition = {
-            { duration: 0.8, ease: "easeOut" } }
+            { duration: 0.8, ease: "easeOut" }
+        }
         className = "bg-gray-900 p-6 rounded-xl border border-gray-800 max-w-xl" >
         <
         h2 className = "text-2xl font-semibold mb-4" >
@@ -63,11 +72,9 @@ function About() {
         <
         button className = "bg-blue-500 px-5 py-2 rounded-lg hover:bg-blue-600" >
         Submit <
-        /button>
-
-        <
-        /form> <
-        /motion.div>
+        /button>                      / <
+        /form> < /
+        motion.div >
 
         <
         /div>
@@ -75,3 +82,5 @@ function About() {
 }
 
 export default About;
+
+//update
