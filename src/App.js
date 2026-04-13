@@ -7,6 +7,10 @@ import Podcasts from "./pages/Podcasts";
 import About from "./pages/About";
 import Favorites from "./pages/Favorites";
 import AudioPlayer from "./components/AudioPlayer";
+import Guests from "./pages/Guests";
+
+import EpisodeDetail from "./pages/EpisodeDetail";
+
 
 function App() {
     const [currentPodcast, setCurrentPodcast] = useState(null);
@@ -17,48 +21,64 @@ function App() {
             <
             Router >
 
-            { /* NAVBAR */ } <
+            <
             Navbar / >
 
-            { /* ROUTES */ } <
+            { /* ✅ ALL ROUTES MUST BE INSIDE <Routes> */ } <
             Routes >
+
             <
             Route path = "/"
-            element = { < Home / > }
-            />
-
-            <
-            Route path = "/podcasts"
-            element = { < Podcasts setCurrentPodcast = { setCurrentPodcast }
-                />} /
-                >
-
+            element = { < Home setCurrentPodcast = { setCurrentPodcast }
+                />} / >
                 <
                 Route
-                path = "/favorites"
-                element = { < Favorites setCurrentPodcast = { setCurrentPodcast }
-                    />} /
+                path = "/guests"
+                element = { < Guests setCurrentPodcast = { setCurrentPodcast }
+                    />}  /
                     >
-
                     <
-                    Route path = "/about"
-                    element = { < About / > }
-                    /> <
-                    /Routes>
+                    Route
+                    path = "/podcasts"
+                    element = { < Podcasts setCurrentPodcast = { setCurrentPodcast }
+                        />} / >
 
-                    { /* GLOBAL AUDIO PLAYER */ } {
-                        currentPodcast && ( <
-                            AudioPlayer podcast = { currentPodcast }
+                        <
+                        Route
+                        path = "/favorites"
+                        element = { < Favorites setCurrentPodcast = { setCurrentPodcast }
+                            />} / >
+
+                            <
+                            Route
+                            path = "/about"
+                            element = { < About / > }
                             />
-                        )
-                    }
 
-                    <
-                    /Router>
+                            <
+                            Route
+                            path = "/episode/:id"
+                            element = { < EpisodeDetail setCurrentPodcast = { setCurrentPodcast }
+                                />} / >
 
-                    <
-                    /div>
-                );
-            }
 
-            export default App;
+
+                                <
+                                /Routes>
+
+                                { /* PLAYER */ } {
+                                    currentPodcast && ( <
+                                        AudioPlayer podcast = { currentPodcast }
+                                        />
+                                    )
+                                }
+
+                                <
+                                /Router>
+
+                                <
+                                /div>
+                            );
+                        }
+
+                        export default App;

@@ -12,7 +12,7 @@ function About() {
         transition = {
             { duration: 0.8, ease: "easeOut" } }
         className = "text-4xl font-bold mb-6" >
-        About Us <
+        About the Show <
         /motion.h1>
 
         { /* DESCRIPTION */ } <
@@ -23,7 +23,7 @@ function About() {
         transition = {
             { duration: 0.8, ease: "easeOut" } }
         className = "text-gray-400 max-w-3xl mb-10" >
-        This podcast platform is designed to deliver curated audio content across multiple domains like technology, business, and health.Built using React and Tailwind CSS, it provides a smooth and immersive listening experience. <
+        This podcast platform delivers curated content across technology, business, and lifestyle.Each episode is designed to provide valuable insights, real - world experiences, and engaging discussions. <
         /motion.p>
 
         { /* CONTACT */ } <
@@ -35,19 +35,38 @@ function About() {
             { duration: 0.8, ease: "easeOut" } }
         className = "bg-gray-900 p-6 rounded-xl border border-gray-800 max-w-xl" >
         <
-        h2 className = "text-2xl font-semibold mb-4" > Contact Us < /h2>
+        h2 className = "text-2xl font-semibold mb-4" >
+        Contact / Guest Pitch / Sponsorship <
+        /h2>
 
         <
-        p className = "text-gray-400 mb-2" > 📧Email: support @podcastapp.com <
-        /p>
+        form className = "space-y-4" >
 
         <
-        p className = "text-gray-400 mb-2" > 📞Phone: +91 98765 43210 <
-        /p>
+        input type = "text"
+        placeholder = "Your Name"
+        className = "w-full p-3 bg-gray-800 rounded outline-none" /
+        >
 
         <
-        p className = "text-gray-400" > 📍Location: India <
-        /p> <
+        input type = "email"
+        placeholder = "Your Email"
+        className = "w-full p-3 bg-gray-800 rounded outline-none" /
+        >
+
+        <
+        textarea placeholder = "Your Message"
+        rows = "4"
+        className = "w-full p-3 bg-gray-800 rounded outline-none" /
+        >
+
+        <
+        button className = "bg-blue-500 px-5 py-2 rounded-lg hover:bg-blue-600" >
+        Submit <
+        /button>
+
+        <
+        /form> <
         /motion.div>
 
         <

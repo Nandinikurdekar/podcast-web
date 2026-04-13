@@ -1,56 +1,71 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import podcasts from "../data/podcasts";
+import PodcastCard from "../components/PodcastCard";
 
-function Home() {
+function Home({ setCurrentPodcast }) {
+
+    const latest = podcasts && podcasts.length > 0 ? podcasts[0] : null;
+
     return ( <
-        div className = "relative bg-gradient-to-b from-black via-gray-900 to-black text-white min-h-screen flex flex-col items-center justify-center text-center px-6" >
+        div className = "bg-black text-white min-h-screen px-6 py-10" >
 
-        { /* Heading */ } <
-        motion.h1 initial = {
-            { opacity: 0, y: 30 } }
+        <
+        motion.div initial = {
+            { opacity: 0, y: 20 } }
         animate = {
             { opacity: 1, y: 0 } }
         transition = {
-            { duration: 0.6 } }
-        className = "text-5xl md:text-7xl font-extrabold tracking-tight mb-6" >
-        Discover the World of Podcasts <
-        /motion.h1>
+            { duration: 0.8, ease: "easeOut" } }
+        className = "mb-12" >
+        <
+        h1 className = "text-5xl font-bold mb-4" >
+        Discover Amazing Podcasts🎧 <
+        /h1>
 
-        { /* Subtitle */ } <
-        motion.p initial = {
+        <
+        p className = "text-gray-400 max-w-2xl" >
+        Listen to curated podcasts across tech, business, and lifestyle. <
+        /p> <
+        /motion.div>
+
+        {
+            latest && ( <
+                motion.div initial = {
+                    { opacity: 0, y: 20 } }
+                animate = {
+                    { opacity: 1, y: 0 } }
+                transition = {
+                    { duration: 0.8, ease: "easeOut" } }
+                className = "mb-12" >
+                <
+                h2 className = "text-2xl font-semibold mb-4" > Latest Episode < /h2>
+
+                <
+                PodcastCard {...latest }
+                setCurrentPodcast = { setCurrentPodcast }
+                /> <
+                /motion.div>
+            )
+        }
+
+        <
+        motion.div initial = {
             { opacity: 0 } }
         animate = {
             { opacity: 1 } }
         transition = {
-            { delay: 0.3 } }
-        className = "text-gray-400 max-w-2xl mb-8 text-lg" >
-        Dive into curated audio experiences.Learn, explore, and stay inspired. <
-        /motion.p>
-
-        { /* Button */ } <
-        motion.div initial = {
-            { opacity: 0, scale: 0.9 } }
-        animate = {
-            { opacity: 1, scale: 1 } }
-        transition = {
-            { delay: 0.5 } } >
+            { duration: 0.8, ease: "easeOut" } } >
         <
-        Link to = "/podcasts"
-        className = "bg-blue-500 hover:bg-blue-600 px-8 py-3 rounded-lg text-lg transition-all" >
-        Explore Podcasts <
-        /Link> <
+        h2 className = "text-xl mb-4" > Listen On < /h2>
+
+        <
+        div className = "flex gap-4" >
+        <
+        button className = "bg-green-500 px-4 py-2 rounded-lg" > Spotify < /button> <
+        button className = "bg-purple-500 px-4 py-2 rounded-lg" > Apple < /button> <
+        button className = "bg-red-500 px-4 py-2 rounded-lg" > YouTube < /button> <
+        /div> <
         /motion.div>
-
-        { /* Floating Cards */ } <
-        div className = "absolute bottom-10 flex gap-6 opacity-20" >
-
-        <
-        div className = "w-24 h-24 bg-gray-800 rounded-xl animate-bounce" > < /div> <
-        div className = "w-24 h-24 bg-gray-800 rounded-xl animate-bounce delay-200" > < /div> <
-        div className = "w-24 h-24 bg-gray-800 rounded-xl animate-bounce delay-500" > < /div>
-
-        <
-        /div>
 
         <
         /div>
