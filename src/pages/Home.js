@@ -11,31 +11,37 @@ function Home({ setCurrentPodcast }) {
 
         <
         motion.div initial = {
-            { opacity: 0, y: 20 } }
+            { opacity: 0, y: 20 }
+        }
         animate = {
-            { opacity: 1, y: 0 } }
+            { opacity: 1, y: 0 }
+        }
         transition = {
-            { duration: 0.8, ease: "easeOut" } }
+            { duration: 0.8, ease: "easeOut" }
+        }
         className = "mb-12" >
         <
-        h1 className = "text-5xl font-bold mb-4" >
+        h1 className = "text-6xl font-extrabold mb-4 leading-tight" >
         Discover Amazing Podcasts🎧 <
         /h1>
 
         <
-        p className = "text-gray-400 max-w-2xl" >
+        p className = "text-gray-400 max-w-2xl text-lg" >
         Listen to curated podcasts across tech, business, and lifestyle. <
-        /p> <
-        /motion.div>
+        /p> < /
+        motion.div >
 
         {
             latest && ( <
                 motion.div initial = {
-                    { opacity: 0, y: 20 } }
+                    { opacity: 0, y: 20 }
+                }
                 animate = {
-                    { opacity: 1, y: 0 } }
+                    { opacity: 1, y: 0 }
+                }
                 transition = {
-                    { duration: 0.8, ease: "easeOut" } }
+                    { duration: 0.8, ease: "easeOut" }
+                }
                 className = "mb-12" >
                 <
                 h2 className = "text-2xl font-semibold mb-4" > Latest Episode < /h2>
@@ -43,18 +49,21 @@ function Home({ setCurrentPodcast }) {
                 <
                 PodcastCard {...latest }
                 setCurrentPodcast = { setCurrentPodcast }
-                /> <
-                /motion.div>
+                /> < /
+                motion.div >
             )
         }
 
         <
         motion.div initial = {
-            { opacity: 0 } }
+            { opacity: 0 }
+        }
         animate = {
-            { opacity: 1 } }
+            { opacity: 1 }
+        }
         transition = {
-            { duration: 0.8, ease: "easeOut" } } >
+            { duration: 0.8, ease: "easeOut" }
+        } >
         <
         h2 className = "text-xl mb-4" > Listen On < /h2>
 
@@ -63,8 +72,8 @@ function Home({ setCurrentPodcast }) {
         <
         button className = "bg-green-500 px-4 py-2 rounded-lg" > Spotify < /button> <
         button className = "bg-purple-500 px-4 py-2 rounded-lg" > Apple < /button> <
-        button className = "bg-red-500 px-4 py-2 rounded-lg" > YouTube < /button> <
-        /div> <
+        button className = "bg-red-500 px-4 py-2 rounded-lg" > YouTube < /button> < /
+        div > <
         /motion.div>
 
         <

@@ -14,7 +14,7 @@ function Podcasts({ setCurrentPodcast }) {
     const upcoming = podcasts.slice(2, 4);
 
     return ( <
-        div className = "bg-black text-white min-h-screen px-6 py-10" >
+        div className = "bg-black text-white min-h-screen px-6 py-10 space-y-12" >
 
         { /* TITLE */ } <
         motion.h1 initial = {
@@ -22,8 +22,8 @@ function Podcasts({ setCurrentPodcast }) {
         animate = {
             { opacity: 1, y: 0 } }
         transition = {
-            { duration: 0.8, ease: "easeOut" } }
-        className = "text-4xl font-bold mb-6" >
+            { duration: 0.8 } }
+        className = "text-4xl font-bold" >
         Explore Podcasts <
         /motion.h1>
 
@@ -39,22 +39,16 @@ function Podcasts({ setCurrentPodcast }) {
         value = { search }
         onChange = {
             (e) => setSearch(e.target.value) }
-        className = "w-full mb-8 p-3 rounded bg-gray-800 outline-none" /
+        className = "w-full p-3 rounded-xl bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-blue-500 outline-none" /
         >
 
         { /* CONTINUE LISTENING */ } <
-        motion.div initial = {
-            { opacity: 0, y: 20 } }
-        animate = {
-            { opacity: 1, y: 0 } }
-        transition = {
-            { duration: 0.8 } }
-        className = "mb-10" >
+        div className = "space-y-4" >
         <
-        h2 className = "text-xl mb-4" > Continue Listening < /h2>
+        h2 className = "text-2xl font-semibold" > Continue Listening < /h2>
 
         <
-        div className = "grid grid-cols-2 md:grid-cols-4 gap-4" > {
+        div className = "grid grid-cols-2 md:grid-cols-4 gap-6" > {
             recent.map((pod) => ( <
                 PodcastCard key = { pod.id } {...pod }
                 setCurrentPodcast = { setCurrentPodcast }
@@ -62,21 +56,15 @@ function Podcasts({ setCurrentPodcast }) {
             ))
         } <
         /div> <
-        /motion.div>
+        /div>
 
         { /* RECENT */ } <
-        motion.div initial = {
-            { opacity: 0, y: 20 } }
-        animate = {
-            { opacity: 1, y: 0 } }
-        transition = {
-            { duration: 0.8 } }
-        className = "mb-10" >
+        div className = "space-y-4" >
         <
-        h2 className = "text-xl mb-4" > Recently Released < /h2>
+        h2 className = "text-2xl font-semibold" > Recently Released < /h2>
 
         <
-        div className = "grid grid-cols-2 md:grid-cols-4 gap-4" > {
+        div className = "grid grid-cols-2 md:grid-cols-4 gap-6" > {
             recent.map((pod) => ( <
                 PodcastCard key = { pod.id } {...pod }
                 setCurrentPodcast = { setCurrentPodcast }
@@ -84,21 +72,15 @@ function Podcasts({ setCurrentPodcast }) {
             ))
         } <
         /div> <
-        /motion.div>
+        /div>
 
         { /* UPCOMING */ } <
-        motion.div initial = {
-            { opacity: 0, y: 20 } }
-        animate = {
-            { opacity: 1, y: 0 } }
-        transition = {
-            { duration: 0.8 } }
-        className = "mb-10" >
+        div className = "space-y-4" >
         <
-        h2 className = "text-xl mb-4" > Upcoming < /h2>
+        h2 className = "text-2xl font-semibold" > Upcoming < /h2>
 
         <
-        div className = "grid grid-cols-2 md:grid-cols-4 gap-4" > {
+        div className = "grid grid-cols-2 md:grid-cols-4 gap-6" > {
             upcoming.map((pod) => ( <
                 PodcastCard key = { pod.id } {...pod }
                 setCurrentPodcast = { setCurrentPodcast }
@@ -106,17 +88,12 @@ function Podcasts({ setCurrentPodcast }) {
             ))
         } <
         /div> <
-        /motion.div>
+        /div>
 
-        { /* ALL */ } <
-        motion.div initial = {
-            { opacity: 0 } }
-        animate = {
-            { opacity: 1 } }
-        transition = {
-            { duration: 0.8 } } >
+        { /* ALL PODCASTS */ } <
+        div className = "space-y-4" >
         <
-        h2 className = "text-xl mb-4" > All Podcasts < /h2>
+        h2 className = "text-2xl font-semibold" > All Podcasts < /h2>
 
         <
         div className = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" > {
@@ -127,7 +104,7 @@ function Podcasts({ setCurrentPodcast }) {
             ))
         } <
         /div> <
-        /motion.div>
+        /div>
 
         <
         /div>

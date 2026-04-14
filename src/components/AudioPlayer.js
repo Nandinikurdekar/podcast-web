@@ -1,30 +1,22 @@
 import { useRef, useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
-function AudioPlayer(props) {
-    const podcast = props.podcast;
-
+function AudioPlayer({ podcast }) {
     const audioRef = useRef(null);
     const [playing, setPlaying] = useState(false);
     const [expanded, setExpanded] = useState(false);
 
-    useEffect(function() {
+    useEffect(() => {
         if (!podcast || !audioRef.current) return;
 
         audioRef.current.src = podcast.audio;
 
         audioRef.current.play()
-            .then(function() {
-                setPlaying(true);
-            })
-            .catch(function() {
-                setPlaying(false);
-            });
-
+            .then(() => setPlaying(true))
+            .catch(() => setPlaying(false));
     }, [podcast]);
 
     function togglePlay(e) {
-        e.stopPropagation();
+        if (e) e.stopPropagation();
 
         if (!audioRef.current) return;
 
@@ -32,118 +24,83 @@ function AudioPlayer(props) {
             audioRef.current.pause();
             setPlaying(false);
         } else {
-            audioRef.current.play().then(function() {
-                setPlaying(true);
-            });
+            audioRef.current.play().then(() => setPlaying(true));
         }
     }
 
-    var image =
-        podcast && podcast.image ?
-        podcast.image :
-        "https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=800";
-
     return ( <
-        >
-        <
-        AnimatePresence >
+        div >
 
         { /* MINI PLAYER */ } {
-            !expanded && ( <
-                motion.div initial = {
-                    { y: 100 } }
-                animate = {
-                    { y: 0 } }
-                exit = {
-                    { y: 100 } }
-                transition = {
-                    { duration: 0.3 } }
-                className = "fixed bottom-0 left-0 w-full bg-gray-900 border-t border-gray-800 px-6 py-3 flex justify-between items-center cursor-pointer"
-                onClick = {
-                    () => setExpanded(true) } >
+            !expanded && podcast && ( <
+                div onClick = {
+                    () => setExpanded(true) }
+                className = "fixed bottom-0 left-0 w-full bg-black/80 backdrop-blur-md border-t border-gray-800 px-6 py-4 flex justify-between items-center cursor-pointer shadow-2xl" >
                 <
-                div style = {
-                    { display: "flex", alignItems: "center", gap: "10px" } } >
+                div className = "flex items-center gap-4" >
                 <
-                img src = { image }
-                alt = ""
-                style = {
-                    { width: "50px", height: "50px", borderRadius: "8px", objectFit: "cover" } }
-                />
+                img src = { podcast.image }
+                alt = { podcast.title }
+                className = "w-14 h-14 rounded-lg object-cover" /
+                >
 
                 <
                 div >
                 <
-                p > { podcast ? podcast.title : "No podcast" } < /p> <
-                p style = {
-                    { fontSize: "12px", color: "gray" } } > Now Playing < /p> <
+                p className = "font-medium" > { podcast.title } < /p> <
+                p className = "text-sm text-gray-400" > Now Playing < /p> <
                 /div> <
                 /div>
 
                 <
-                button onClick = {
-                    (e) => togglePlay(e) } > { playing ? "Pause" : "Play" } <
+                button onClick = { togglePlay }
+                className = "bg-blue-500 px-5 py-2 rounded-full hover:bg-blue-600 transition" >
+                { playing ? "Pause" : "Play" } <
                 /button> <
-                /motion.div>
+                /div>
             )
         }
 
         { /* EXPANDED PLAYER */ } {
-            expanded && ( <
-                motion.div initial = {
-                    { y: "100%" } }
-                animate = {
-                    { y: 0 } }
-                exit = {
-                    { y: "100%" } }
-                transition = {
-                    { duration: 0.4 } }
-                className = "fixed top-0 left-0 w-full h-full bg-black text-white flex flex-col items-center justify-center" >
+            expanded && podcast && ( <
+                div className = "fixed top-0 left-0 w-full h-full bg-black text-white flex flex-col items-center justify-center" >
 
                 <
+                img src = { podcast.image }
+                alt = { podcast.title }
+                className = "w-72 h-72 rounded-2xl object-cover mb-6 shadow-lg" /
+                >
+
+                <
+                h2 className = "text-2xl font-semibold mb-2" > { podcast.title } <
+                /h2>
+
+                <
+                p className = "text-gray-400 mb-6" > Now Playing < /p>
+
+                <
+                button onClick = { togglePlay }
+                className = "bg-blue-500 px-6 py-3 rounded-full hover:bg-blue-600 transition mb-6" >
+                { playing ? "Pause" : "Play" } <
+                /button>
+
+                { /* CLOSE BUTTON (BOTTOM) */ } <
                 button onClick = {
                     () => setExpanded(false) }
-                style = {
-                    { position: "absolute", top: "20px", right: "20px", fontSize: "20px" } } >
-                ✕
-                <
+                className = "bg-gray-800 px-6 py-2 rounded-full hover:bg-gray-700 transition" >
+                Close Player <
                 /button>
 
                 <
-                img src = { image }
-                alt = ""
-                style = {
-                    {
-                        width: "250px",
-                        height: "250px",
-                        borderRadius: "12px",
-                        objectFit: "cover",
-                        marginBottom: "20px"
-                    }
-                }
-                />
-
-                <
-                h2 > { podcast ? podcast.title : "" } < /h2>
-
-                <
-                button onClick = {
-                    (e) => togglePlay(e) }
-                style = {
-                    { marginTop: "20px" } } > { playing ? "Pause" : "Play" } <
-                /button>
-
-                <
-                /motion.div>
+                /div>
             )
         }
 
         <
-        /AnimatePresence>
+        audio ref = { audioRef } > < /audio>
 
         <
-        audio ref = { audioRef } > < /audio> <
-        />
+        /div>
     );
 }
 
